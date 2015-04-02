@@ -1,0 +1,11 @@
+Django==1.7.7
+django-dbsettings==0.7.4
+django-debug-toolbar==1.3.0
+django-extensions==1.5.2
+Pillow==2.7.0
+reportlab==3.1.44
+sendgrid==1.3.0
+sendgrid-django==1.2.0
+six==1.9.0
+smtpapi==0.2.0
+sqlparse==0.1.14

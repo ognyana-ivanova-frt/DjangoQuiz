@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'quizApp/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h2 class="quiz">Python Quiz</h2>
+    <h2 class="finish">Finish! </h2>
+    <p class="quiz-end">You have <span class="correct">{{ correct_answers }}</span>/{{ count_questions }} correct answers</p>
+{% endblock %}

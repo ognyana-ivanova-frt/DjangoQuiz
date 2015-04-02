@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{% static 'quizApp/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+   <h2 class="quiz">Python Quiz</h2>
+
+  {% if messages %}
+    <ul class="messages">
+        {% for msg in messages %}
+            <li>
+                <div class="alert alert-{{msg.level_tag}}" role="alert">
+                    {{msg.message}}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% for question in questions %}
+        <form id ={{ questions.number }} action="{% url 'quizApp:vote' questions.number %}" method="post">
+            <div class="question-text">{{ question }}</div>
+                {% for answer in question.answers %}
+                    {% csrf_token %}
+                        <div>
+                            <input type="radio" name="answer" id="answer{{ answer.id }}" class="radio" value="{{ answer.id }}"/>
+                            <label for="answer{{ answer.id }}">{{ answer.answer }}</label>
+                        </div>
+                {% endfor %}
+                <input type="submit" name="btn" class="btn-style" value="Next" />
+        </form>
+    {% endfor %}
+{% endblock %}
